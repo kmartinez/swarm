@@ -351,13 +351,13 @@ def gpspoll():
       gpsObj = {}
       gn = lastGN[4:-3].split(',')
       s = lastDT
-      gpsObj['d'] = 946684800 + time.mktime((int(s[4:8]), int(s[8:10]), int(s[10:12]), int(s[12:14]), int(s[14:16]), int(s[16:18]), -1, -1, -1))
+      gpsObj['d'] = time.mktime((int(s[4:8]), int(s[8:10]), int(s[10:12]), int(s[12:14]), int(s[14:16]), int(s[16:18]), -1, -1, -1))
       gpsObj['lt'] = float(gn[0])
       gpsObj['ln'] = float(gn[1])
       gpsObj['a'] = float(gn[2])
       gpsObj['c'] = float(gn[3])
-      gpsObj['s'] = float(gn[4])
-      gpsObj['n'] = gpsCount
+      
+      # volts and currents SolarI, SolarV, BatI, BatV, TileI
       gpsObj['si'] = inaData[2][1]
       gpsObj['sv'] = inaData[2][0]
       gpsObj['bi'] = inaData[1][1]
